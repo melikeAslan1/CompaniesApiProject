@@ -20,13 +20,6 @@ namespace Companies_EL.Concrete
         [StringLength(50)]
         public string Name { get; set; }
 
-        public int CompanyId { get; set; }
-
-        [Required]
-        [ForeignKey("CompanyId")]
-        public virtual Company Company { get; set; }
-
-        public int? UstDepartmantId { get; set; }
 
 
     }

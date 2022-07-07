@@ -36,6 +36,6 @@ namespace Companies_EL.Concrete
         [StringLength(50)]
         public string CompanyAddress { get; set; }
 
-        public virtual ICollection<Department> departments { get; set; }
+        
     }
 }

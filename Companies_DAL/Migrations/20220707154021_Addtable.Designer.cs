@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Companies_DAL.Migrations
 {
     [DbContext(typeof(CompanyDbContext))]
-    [Migration("20220706192208_initialDb")]
-    partial class initialDb
+    [Migration("20220707154021_Addtable")]
+    partial class Addtable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -69,9 +69,6 @@ namespace Companies_DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CompanyId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -82,25 +79,7 @@ namespace Companies_DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CompanyId");
-
                     b.ToTable("Departments");
-                });
-
-            modelBuilder.Entity("Companies_EL.Concrete.Department", b =>
-                {
-                    b.HasOne("Companies_EL.Concrete.Company", "Company")
-                        .WithMany("departments")
-                        .HasForeignKey("CompanyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Company");
-                });
-
-            modelBuilder.Entity("Companies_EL.Concrete.Company", b =>
-                {
-                    b.Navigation("departments");
                 });
 #pragma warning restore 612, 618
         }

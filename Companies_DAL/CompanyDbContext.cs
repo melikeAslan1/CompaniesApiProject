@@ -20,5 +20,7 @@ namespace Companies_DAL
         }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Company> Companies { get; set; }
+
+        public DbSet<CompanyDepartment> CompanyDepartments { get; set; }
     }
 }

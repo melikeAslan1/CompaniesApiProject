@@ -9,19 +9,22 @@ using System.Threading.Tasks;
 
 namespace Companies_DAL.Repository.Concrete
 {
-    public class DepartmentRepository : IDepartmentRepository
+    public class CompanyDepartmentRepository : ICompanyDepartmentRepository
     {
         private CompanyDbContext _context;
 
-        public DepartmentRepository(CompanyDbContext context)
+        public CompanyDepartmentRepository(CompanyDbContext context)
         {
             _context = context;
         }
-
-        public async Task Add(Department entity)
+        public async Task Add(CompanyDepartment entity)
         {
-            await _context.AddAsync(entity);
+
+            await _context.CompanyDepartments.AddAsync(entity);
             await _context.SaveChangesAsync();
+
+            //await _context.AddAsync(entity);
+            //await _context.SaveChangesAsync();
         }
 
         public Task Delete(int id)
@@ -29,13 +32,13 @@ namespace Companies_DAL.Repository.Concrete
             throw new NotImplementedException();
         }
 
-        public async Task<IList<Department>> GetDetail()
+        public async Task<IList<CompanyDepartment>> GetDetail()
         {
-            var departments = await _context.Departments.ToListAsync();
-            return departments;
+            var companyDepartments = await _context.CompanyDepartments.ToListAsync();
+            return companyDepartments;
         }
 
-        public Task Update(Department entity)
+        public Task Update(CompanyDepartment entity)
         {
             throw new NotImplementedException();
         }

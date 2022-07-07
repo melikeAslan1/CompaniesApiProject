@@ -17,9 +17,26 @@ namespace Companies_BLL.Concrete
         {
             _companyRepository = companyRepository;
         }
+
+        public async Task Add(Company entity)
+        {
+            await _companyRepository.Add(entity);
+            //await _companyRepository.Save
+        }
+
+        public Task Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<IList<Company>> GetDetail()
         {
             return _companyRepository.GetDetail();
+        }
+
+        public Task Update(Company entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

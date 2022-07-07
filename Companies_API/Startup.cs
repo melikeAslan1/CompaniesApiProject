@@ -37,9 +37,11 @@ namespace Companies_API
 
             services.AddScoped<ICompanyService, CompanyManager>();
             services.AddScoped<IDepartmentService, DepartmentManager>();
+            services.AddScoped<ICompanyDepartmentService, CompanyDepartmentManager>();
 
             services.AddScoped<ICompanyRepository, CompanyRepository>();
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<ICompanyDepartmentRepository, CompanyDepartmentRepository>();
 
 
 

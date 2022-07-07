@@ -7,15 +7,10 @@ using System.Threading.Tasks;
 
 namespace Companies_BLL.Abstract
 {
-    public interface ICompanyService
+    public interface ICompanyDepartmentService
     {
+        Task<IList<CompanyDepartment>> GetDetail();
 
-        Task<IList<Company>> GetDetail();
-
-        Task Add(Company entity);
-
-        Task Update(Company entity);
-
-        Task Delete(int id);
+        Task Add(CompanyDepartment entity);
     }
 }

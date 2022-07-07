@@ -18,15 +18,28 @@ namespace Companies_DAL.Repository.Concrete
             _context = context;
         }
 
-        public Task Add(Company entity)
+        public async Task Add(Company entity)
         {
-            throw new NotImplementedException();
+            await _context.AddAsync(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Delete(int id)
+        {
+            var product = await _context.Companies.FirstOrDefaultAsync(p => p.Id == id);
+            _context.Companies.Remove(product);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IList<Company>> GetDetail()
         {
             var companies = await _context.Companies.ToListAsync();
             return companies;
+        }
+
+        public Task Update(Company entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }
