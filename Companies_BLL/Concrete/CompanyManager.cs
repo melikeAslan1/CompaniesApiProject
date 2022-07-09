@@ -21,12 +21,12 @@ namespace Companies_BLL.Concrete
         public async Task Add(Company entity)
         {
             await _companyRepository.Add(entity);
-            //await _companyRepository.Save
+           
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+           await _companyRepository.Delete(id);
         }
 
         public Task<IList<Company>> GetDetail()

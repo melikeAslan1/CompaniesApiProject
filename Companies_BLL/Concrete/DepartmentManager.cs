@@ -11,15 +11,26 @@ namespace Companies_BLL.Concrete
 {
     public class DepartmentManager : IDepartmentService
     {
-        private IDepartmentRepository _deparmentRepository;
+        private IDepartmentRepository _departmentRepository;
 
-        public DepartmentManager(IDepartmentRepository deparmentRepository)
+        public DepartmentManager(IDepartmentRepository departmentRepository)
         {
-            _deparmentRepository = deparmentRepository;
+            _departmentRepository = departmentRepository;
         }
+
+        public async Task Add(Department entity)
+        {
+            await _departmentRepository.Add(entity);
+        }
+
+        public async Task Delete(int id)
+        {
+            await _departmentRepository.Delete(id);
+        }
+
         public Task<IList<Department>> GetDetail()
         {
-            return _deparmentRepository.GetDetail();
+            return _departmentRepository.GetDetail();
         }
     }
 }

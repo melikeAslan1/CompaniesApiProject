@@ -10,5 +10,8 @@ namespace Companies_BLL.Abstract
     public interface IDepartmentService
     {
         Task<IList<Department>> GetDetail();
+        Task Delete(int id);
+
+        Task Add(Department entity);
     }
 }

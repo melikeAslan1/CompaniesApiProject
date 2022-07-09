@@ -1,4 +1,5 @@
 ﻿using Companies_BLL.Abstract;
+using Companies_EL.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,5 +27,57 @@ namespace Companies_API.Controllers
 
             return Ok(departments);
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            if (id < 0)
+            {
+                throw new ArgumentException("id değeri negatif olamaz!");
+
+            }
+            await _departmentService.Delete(id);
+            return Ok();
+        }
+
+        [HttpPost] 
+        public async Task<IActionResult> Add([FromBody]Department department)
+        {
+
+            //return _departmentService.Add(department);
+
+
+
+            //hatasız
+            await _departmentService.Add(department);
+            //await _departmentService.SaveChangesAsync();
+            return CreatedAtAction("Add", new { id = department.Id }, department);
+
+
+
+            //return CreatedAtAction(nameof(GetBookById), routeValues: new { id = departmentId }, value: null);
+
+
+
+
+
+            //_context.TodoItems.Add(todoItem);
+            //await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
+
+
+
+
+            //if (ModelState.IsValid)
+            //{
+            //    int BookId = await _departmentService.Add(department);
+
+            //    //Url yönlendirmesi,eklendiği zaman detay olrak istemciye yeni url veriyoruz
+            //    return CreatedAtAction(nameof(GetBookById), routeValues: new { id = BookId }, value: null);  //nameof Nesne,metot adı kullanıyorsanız hata yapmayı engeller
+            //}
+            //return BadRequest(ModelState);
+        }
+
     }
 }

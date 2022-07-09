@@ -26,8 +26,8 @@ namespace Companies_DAL.Repository.Concrete
 
         public async Task Delete(int id)
         {
-            var product = await _context.Companies.FirstOrDefaultAsync(p => p.Id == id);
-            _context.Companies.Remove(product);
+            var company = await _context.Companies.FirstOrDefaultAsync(p => p.Id == id);
+            _context.Companies.Remove(company);
             await _context.SaveChangesAsync();
         }
 

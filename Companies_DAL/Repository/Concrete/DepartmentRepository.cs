@@ -24,9 +24,11 @@ namespace Companies_DAL.Repository.Concrete
             await _context.SaveChangesAsync();
         }
 
-        public Task Delete(int id)
+        public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            var department = await _context.Departments.FirstOrDefaultAsync(p => p.Id == id);
+            _context.Departments.Remove(department);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IList<Department>> GetDetail()
