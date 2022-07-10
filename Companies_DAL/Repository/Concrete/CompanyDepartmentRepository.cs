@@ -35,6 +35,10 @@ namespace Companies_DAL.Repository.Concrete
         public async Task<IList<CompanyDepartment>> GetDetail()
         {
             var companyDepartments = await _context.CompanyDepartments.ToListAsync();
+            //CompanyDepartment cd = new CompanyDepartment();
+            //cd.CompanyId=companyDepartments.
+
+
             return companyDepartments;
         }
 

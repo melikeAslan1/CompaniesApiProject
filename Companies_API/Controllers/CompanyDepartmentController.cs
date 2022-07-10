@@ -28,33 +28,20 @@ namespace Companies_API.Controllers
             return Ok(companyDepartments);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Add([FromQuery] int companyId, int departmentId, int? ustDepartmentId)
+        {
+            CompanyDepartment cd = new CompanyDepartment()
+            {
+                CompanyId = companyId,
+                DepartmentId = departmentId,
+                UstDepartmentId = ustDepartmentId
+            };
+          
+            await _companyDepartmentService.Add(cd);
+            return CreatedAtAction("Add", new { id = cd.Id }, cd);
+        }
 
-        //[HttpPost]        
-        //public async Task<IActionResult> Add([FromBody]CompanyDepartment entity)
-        //{
-        //    //if (ModelState.IsValid)
-        //    //{
-        //    //    int CompanyDepartmentId = await _companyDepartmentService.Add(entity);
-
-        //    //    //Url yönlendirmesi,eklendiği zaman detay olrak istemciye yeni url veriyoruz
-        //    //    return CreatedAtAction(nameof(CompanyDepartmentId), routeValues: new { id = CompanyDepartmentId }, value: null);  //nameof Nesne,metot adı kullanıyorsanız hata yapmayı engeller
-        //    //}
-        //    //return BadRequest(ModelState);
-
-        //    try
-        //    {
-               
-        //        var result = _companyDepartmentService.Add(entity);
-               
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        return Problem("Beklenmedik bir hata oluştu! " + ex.Message);
-        //    }
-            
-        //}
-
-
+        
     }
 }

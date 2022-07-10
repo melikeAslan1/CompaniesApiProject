@@ -13,14 +13,13 @@ namespace Companies_EL.Concrete
     public class Company : IEntity
     {
         [Key]
-        [Required]
         public int Id { get; set; }
 
-        [Required]
+      
         [StringLength(50)]
         public string Name { get; set; }
 
-        [Required]
+      
         [StringLength(20)]
         public string CompanyType { get; set; }
 

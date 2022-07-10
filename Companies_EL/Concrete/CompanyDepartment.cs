@@ -13,24 +13,21 @@ namespace Companies_EL.Concrete
     public class CompanyDepartment:IEntity
     {
         [Key]
-        [Required]
         public int Id { get; set; }
 
         [Required]
         public int CompanyId { get; set; }
 
 
-        [Required]
         [ForeignKey("CompanyId")]
-        public Company Company { get; set; }
+        public virtual Company Company { get; set; }
 
         [Required]
         public int DepartmentId { get; set; }
 
 
-        [Required]
         [ForeignKey("DepartmentId")]
-        public Department Department { get; set; }
+        public virtual Department Department { get; set; }
 
 
         public int? UstDepartmentId { get; set; }
