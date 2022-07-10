@@ -38,6 +38,11 @@ namespace Companies_DAL.Repository.Concrete
             return companyDepartments;
         }
 
+        public Task<bool> IsExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task Update(CompanyDepartment entity)
         {
             throw new NotImplementedException();

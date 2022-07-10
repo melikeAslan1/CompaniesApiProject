@@ -32,5 +32,15 @@ namespace Companies_BLL.Concrete
         {
             return _departmentRepository.GetDetail();
         }
+
+        public async Task<bool> IsDepartmentExists(int id)
+        {
+            return await _departmentRepository.IsExists(id);
+        }
+
+        public async Task Update(Department entity)
+        {
+            await _departmentRepository.Update(entity);
+        }
     }
 }

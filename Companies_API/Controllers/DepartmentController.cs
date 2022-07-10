@@ -79,5 +79,21 @@ namespace Companies_API.Controllers
             //return BadRequest(ModelState);
         }
 
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, Department department)
+        {
+            if (await _departmentService.IsDepartmentExists(id))
+            {
+                if (ModelState.IsValid)
+                {
+                    await _departmentService.Update(department);
+                    return Ok();
+                }
+                return BadRequest(ModelState);
+            }
+            return NotFound(new { message = $"{id} id'li ürün bulunamadı" });
+        }
+
     }
 }

@@ -34,9 +34,14 @@ namespace Companies_BLL.Concrete
             return _companyRepository.GetDetail();
         }
 
-        public Task Update(Company entity)
+        public async Task<bool> IsCompanyExists(int id)
         {
-            throw new NotImplementedException();
+            return await _companyRepository.IsExists(id);
+        }
+
+        public async Task Update(Company entity)
+        {
+            await _companyRepository.Update(entity);
         }
     }
 }

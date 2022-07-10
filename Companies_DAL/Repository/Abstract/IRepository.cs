@@ -17,6 +17,7 @@ namespace Companies_DAL.Repository.Abstract
 
         Task Delete(int id);
 
+        Task<bool> IsExists(int id);
 
 
     }

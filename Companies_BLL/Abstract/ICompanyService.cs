@@ -17,5 +17,7 @@ namespace Companies_BLL.Abstract
         Task Update(Company entity);
 
         Task Delete(int id);
+
+        Task<bool> IsCompanyExists(int id);
     }
 }

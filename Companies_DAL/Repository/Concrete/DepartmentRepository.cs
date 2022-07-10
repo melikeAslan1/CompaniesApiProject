@@ -37,9 +37,17 @@ namespace Companies_DAL.Repository.Concrete
             return departments;
         }
 
-        public Task Update(Department entity)
+        public async Task<bool> IsExists(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Departments.AnyAsync(p => p.Id == id); //var mı yok mu kontrol eder.
         }
+
+        public async Task Update(Department entity)
+        {
+            _context.Departments.Update(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        
     }
 }

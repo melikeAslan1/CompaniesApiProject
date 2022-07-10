@@ -13,5 +13,9 @@ namespace Companies_BLL.Abstract
         Task Delete(int id);
 
         Task Add(Department entity);
+
+        Task Update(Department entity);
+
+        Task<bool> IsDepartmentExists(int id);
     }
 }

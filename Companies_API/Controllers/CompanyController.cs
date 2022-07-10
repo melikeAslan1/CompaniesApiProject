@@ -46,5 +46,21 @@ namespace Companies_API.Controllers
             await _companyService.Add(company);
             return CreatedAtAction("Add", new { id = company.Id }, company);
         }
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, Company company)
+        {
+            if (await _companyService.IsCompanyExists(id))
+            {
+                if (ModelState.IsValid)
+                {
+                    await _companyService.Update(company);
+                    return Ok();
+                }
+                return BadRequest(ModelState);
+            }
+            return NotFound(new { message = $"{id} id'li ürün bulunamadı" });
+        }
     }
 }
