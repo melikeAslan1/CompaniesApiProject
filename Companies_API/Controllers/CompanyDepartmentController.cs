@@ -36,6 +36,8 @@ namespace Companies_API.Controllers
                 CompanyId = companyId,
                 DepartmentId = departmentId,
                 UstDepartmentId = ustDepartmentId
+                
+                
             };
           
             await _companyDepartmentService.Add(cd);

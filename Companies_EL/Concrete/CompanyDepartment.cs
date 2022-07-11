@@ -21,6 +21,7 @@ namespace Companies_EL.Concrete
 
         [ForeignKey("CompanyId")]
         public virtual Company Company { get; set; }
+        //public string CompanyName { get; set; }
 
         [Required]
         public int DepartmentId { get; set; }
@@ -28,9 +29,10 @@ namespace Companies_EL.Concrete
 
         [ForeignKey("DepartmentId")]
         public virtual Department Department { get; set; }
-
+        //public string DepartmentName { get; set; }
 
         public int? UstDepartmentId { get; set; }
+        //public int MyProperty { get; set; }
 
 
     }
